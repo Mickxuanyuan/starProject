@@ -9,7 +9,7 @@
       "allowJs": true,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "jsx": "react-jsx", // 全新的jsx转化
+      "jsx": "react-jsx",
       "moduleResolution": "node",
       "forceConsistentCasingInFileNames": true,
       "noImplicitReturns": true,
@@ -21,7 +21,11 @@
       "allowSyntheticDefaultImports": true,
       "downlevelIteration": true,
       "paths": {
-        "@/*": ["*"]
+        "~/*": ["*"],
+        "~components/*": ["components/*"],
+        "~assets/*": ["assets/*"],
+        "~pages/*": ["pages/*"],
+        "~utils/*": ["tools/*"]
       }
     },
     "include": ["src", "typings"]
