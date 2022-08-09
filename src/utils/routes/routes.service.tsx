@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Route, Routes, RouteProps } from 'react-router-dom';
 import { IRoute, RouteComponent, RouteComponentPromise } from './IRoute';
 
@@ -24,9 +24,7 @@ export class RoutesService {
     return <Routes>{RoutesArr}</Routes>
   }
 
-
-
-  // 路由守卫
+  // 路由
   static render(route: IRoute) {
     return (props: RouteProps) => {
       let TargetComponent = route.component as RouteComponent;

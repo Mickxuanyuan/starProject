@@ -1,31 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const tsLoader = {
-    test: /\.tsx?$/,
-    exclude: /node_modules/,
-    use: {
-        loader: 'swc-loader',
-        options: {
-            jsc: {
-                parser: {
-                    tsx: true,
-                    syntax: "typescript",
-                    decorators: true,
-                },
-                target: "es5",
-                transform: {
-                  react: {
-                    // swc-loader will check whether webpack mode is 'development'
-                    // and set this automatically starting from 0.1.13. You could also set it yourself.
-                    // swc won't enable fast refresh when development is false
-                    runtime: 'automatic'
-                  }
-                }
-            }
-        }
-    },
-};
+const LoaderFactory = require('./bundle/loaders');
 module.exports = {
     mode: "development",
     entry: {
@@ -36,7 +11,9 @@ module.exports = {
         path: path.resolve(__dirname, './dist')
     },
     module: {
-        rules: [tsLoader],
+        rules:[
+            ...new LoaderFactory().getLoaders()
+        ],
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
