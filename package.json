@@ -1,0 +1,26 @@
+{
+  "name": "star-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.2.224",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "html-webpack-plugin": "^5.5.0",
+    "swc-loader": "^0.2.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.3"
+  }
+}
