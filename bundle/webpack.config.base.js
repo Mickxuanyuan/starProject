@@ -7,8 +7,11 @@ module.exports = {
   entry:{
     main: path.resolve(__dirname,'../src/index.tsx')
   },
+  cache: {
+    type: 'filesystem'
+  },
   output:{
-    filename:'js/[name].[fullhash:5].js',
+    filename:'js/[name].[chunkhash:5].js',
     path: path.resolve(__dirname,'../dist')
   },
   module:{

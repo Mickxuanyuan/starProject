@@ -2,9 +2,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WebpackBar = require('webpackbar');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const {
-  NODE_ENV
+  NODE_ENV,
+  BUNDLEANA
 } = process.env;
 class PluginFactory {
   constructor() {
@@ -16,6 +20,14 @@ class PluginFactory {
     this.plugins.push(
       new WebpackBar()
     )
+  }
+
+  getMiniCssExtractPlugin() {
+      this.plugins.push(
+        new MiniCssExtractPlugin({
+          filename: 'css/[name].[contenthash:5].css'
+        })
+      )
   }
 
   getHtmlWebpackPlugin() {
@@ -38,14 +50,28 @@ class PluginFactory {
     this.plugins.push(new ReactRefreshPlugin())
   }
 
+  getWebpackBarPlugin() {
+    this.plugins.push(
+      new WebpackBar()
+    )
+  }
+
+  getBundleAnalyzerPlugin() {
+    BUNDLEANA && this.plugins.push(new BundleAnalyzerPlugin());
+  }
+
   getPlugins() {
     if (!this.isProd) {
       // 热更新
-      this.getHotModuleReplacementPlugin()
+      this.getHotModuleReplacementPlugin();
+    } else {
+      this.getMiniCssExtractPlugin();
     }
+   
+    this.getBundleAnalyzerPlugin();
     this.getHtmlWebpackPlugin();
+    this.getWebpackBarPlugin();
     this.getDotenv();
-
     return this.plugins;
   }
 }
