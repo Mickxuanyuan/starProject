@@ -1,6 +1,11 @@
 const path = require('path');
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const {
+  NODE_ENV
+} = process.env;
 class LoaderFactory {
   constructor() {
+    this.isProd = NODE_ENV === 'production';
     this.loaders = [];
   }
 
@@ -17,11 +22,15 @@ class LoaderFactory {
 
   // 生成样式配置
   getStyleLoader(options) {
+     // 生产环境提取 CSS
+    const styleLoaderPre = this.isProd ? {
+      loader: MiniCSSExtractPlugin.loader
+    } : {
+      loader: 'style-loader'
+    }
     const loaderConfig = {
       use: [
-        {
-            loader: require.resolve('style-loader')
-        },
+        styleLoaderPre,
         {
           loader: require.resolve("@teamsupercell/typings-for-css-modules-loader"), //Webpack 加载器，它从 css 加载器动态生成 CSS 模块的 TypeScript 类型
           options: {
@@ -34,7 +43,7 @@ class LoaderFactory {
             importLoaders: 1,
             modules: options.isModule ? {
               exportLocalsConvention: 'camelCase',
-              localIdentName: '[name]__[local]--[hash:base64:5]',
+              localIdentName: '[name]__[local]--[contenthash:base64:5]',
             } : false,
           }
         },
@@ -102,6 +111,7 @@ class LoaderFactory {
           }
         }
       },
+
     };
     return tsLoader;
   }
