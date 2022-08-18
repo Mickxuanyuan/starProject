@@ -10,7 +10,7 @@ module.exports = {
         new TerserPlugin({
             parallel: true,
         }),
-        new CssMinimizerPlugin(), // 有多个选项详情看官网
+        new CssMinimizerPlugin(), // This plugin uses cssnano to optimize and minify your CSS.有多个选项详情看官网
     ],
     splitChunks: {
         chunks: "all",
