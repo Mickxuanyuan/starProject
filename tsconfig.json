@@ -1,29 +1,32 @@
 {
-    "compilerOptions": {
-      "baseUrl": "./src",
-      "outDir": "./dist/",
-      "module": "ESNext",
-      "target": "ESNext",
-      "lib": ["dom", "dom.iterable", "esnext"],
-      "sourceMap": true,
-      "allowJs": true,
-      "experimentalDecorators": true,
-      "emitDecoratorMetadata": true,
-      "jsx": "react-jsx", // 全新的jsx转化
-      "moduleResolution": "node",
-      "forceConsistentCasingInFileNames": true,
-      "noImplicitReturns": true,
-      "noImplicitThis": true,
-      "noImplicitAny": true,
-      "importHelpers": true,
-      "suppressImplicitAnyIndexErrors": true,
-      "noUnusedLocals": true,
-      "allowSyntheticDefaultImports": true,
-      "downlevelIteration": true,
-      "paths": {
-        "@/*": ["*"]
-      }
-    },
-    "include": ["src", "typings"]
-  }
-  
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "outDir": "./dist/",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "sourceMap": true,
+    "allowJs": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "importHelpers": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "paths": {
+      "~/*": ["*"],
+      "~components/*": ["components/*"],
+      "~assets/*": ["assets/*"],
+      "~pages/*": ["pages/*"],
+      "~utils/*": ["tools/*"]
+    }
+  },
+  "include": ["./src/**/*", "typings"]
+}

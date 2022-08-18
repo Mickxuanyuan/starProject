@@ -67,7 +67,7 @@ package.json
 <a name="Ix6SN"></a>
 ##### 初始化入口
 index.tsx
-```json
+```typescript
 import ReactDOM from 'react-dom/client';
 import App from './pages/app.component';
 const container = document.getElementById('root');
@@ -261,7 +261,7 @@ module.exports = {
 ```
 <a name="Wqmb4"></a>
 ##### 添加less 和css module webpack配置并封装loader
-```json
+```javascript
 const path = require('path');
 class LoaderFactory {
   constructor() {

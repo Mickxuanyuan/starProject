@@ -1,4 +1,4 @@
-import { IRoute } from '../utils/routes/IRoute';
+import { IRoute } from '~/utils/routes/IRoute';
 
 export const appRoutes: IRoute[] = [{
     path: '/', //登录
